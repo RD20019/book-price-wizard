@@ -9,7 +9,147 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      parametros_costos: {
+        Row: {
+          costo_energia_kwh: number
+          created_at: string
+          depreciacion_equipo: number
+          id: string
+          porcentaje_costos_admin: number
+          porcentaje_derechos_autor: number
+          updated_at: string
+        }
+        Insert: {
+          costo_energia_kwh?: number
+          created_at?: string
+          depreciacion_equipo?: number
+          id?: string
+          porcentaje_costos_admin?: number
+          porcentaje_derechos_autor?: number
+          updated_at?: string
+        }
+        Update: {
+          costo_energia_kwh?: number
+          created_at?: string
+          depreciacion_equipo?: number
+          id?: string
+          porcentaje_costos_admin?: number
+          porcentaje_derechos_autor?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      proyectos_libros: {
+        Row: {
+          autor: string | null
+          costo_estimado: number | null
+          created_at: string
+          id: string
+          isbn: string | null
+          num_paginas: number
+          portada_url: string | null
+          precio_venta_sugerido: number | null
+          tipo_papel_id: string | null
+          tipo_tapa_id: string | null
+          tirada: number
+          titulo: string
+          updated_at: string
+        }
+        Insert: {
+          autor?: string | null
+          costo_estimado?: number | null
+          created_at?: string
+          id?: string
+          isbn?: string | null
+          num_paginas: number
+          portada_url?: string | null
+          precio_venta_sugerido?: number | null
+          tipo_papel_id?: string | null
+          tipo_tapa_id?: string | null
+          tirada: number
+          titulo: string
+          updated_at?: string
+        }
+        Update: {
+          autor?: string | null
+          costo_estimado?: number | null
+          created_at?: string
+          id?: string
+          isbn?: string | null
+          num_paginas?: number
+          portada_url?: string | null
+          precio_venta_sugerido?: number | null
+          tipo_papel_id?: string | null
+          tipo_tapa_id?: string | null
+          tirada?: number
+          titulo?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "proyectos_libros_tipo_papel_id_fkey"
+            columns: ["tipo_papel_id"]
+            isOneToOne: false
+            referencedRelation: "tipos_papel"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "proyectos_libros_tipo_tapa_id_fkey"
+            columns: ["tipo_tapa_id"]
+            isOneToOne: false
+            referencedRelation: "tipos_tapa"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      tipos_papel: {
+        Row: {
+          costo_por_hoja: number
+          created_at: string
+          descripcion: string | null
+          id: string
+          nombre: string
+        }
+        Insert: {
+          costo_por_hoja: number
+          created_at?: string
+          descripcion?: string | null
+          id?: string
+          nombre: string
+        }
+        Update: {
+          costo_por_hoja?: number
+          created_at?: string
+          descripcion?: string | null
+          id?: string
+          nombre?: string
+        }
+        Relationships: []
+      }
+      tipos_tapa: {
+        Row: {
+          costo_adicional: number
+          created_at: string
+          descripcion: string | null
+          id: string
+          nombre: string
+        }
+        Insert: {
+          costo_adicional: number
+          created_at?: string
+          descripcion?: string | null
+          id?: string
+          nombre: string
+        }
+        Update: {
+          costo_adicional?: number
+          created_at?: string
+          descripcion?: string | null
+          id?: string
+          nombre?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
